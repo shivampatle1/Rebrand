@@ -2,6 +2,21 @@
    DR. PRIYADARSHINI LINGARAJ – MAIN JS
    ============================================= */
 
+
+  /* ─── PAGE PRELOADER ─── */
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      // Small delay to appreciate the smooth animation
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 600);
+    } else {
+      // Fallback if preloader is missing from HTML
+      document.body.classList.add('loaded');
+    }
+  });
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── STICKY HEADER ─── */
@@ -166,6 +181,39 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--stagger-index', i);
       });
     });
+  }
+
+  /* ─── TIMELINE PROGRESS ANIMATION ─── */
+  const timeline = document.getElementById('education-timeline');
+  if (timeline) {
+    const items = timeline.querySelectorAll('.timeline-item');
+    const updateTimeline = () => {
+      const rect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const start = windowHeight * 0.8; // Trigger start
+      const end = windowHeight * 0.4;   // Trigger end
+      
+      let progress = 0;
+      if (rect.top < start) {
+        progress = ((start - rect.top) / (start - end)) * 100;
+      }
+      const finalProgress = Math.min(100, Math.max(0, progress));
+      timeline.style.setProperty('--timeline-progress', `${finalProgress}%`);
+
+      items.forEach(item => {
+        const dot = item.querySelector('.timeline-dot');
+        if (dot) {
+          const dotRect = dot.getBoundingClientRect();
+          if (dotRect.top + 20 < start) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        }
+      });
+    };
+    window.addEventListener('scroll', updateTimeline);
+    updateTimeline(); // Initial run
   }
 
   /* ─── APPOINTMENT FORM ─── */

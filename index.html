@@ -15,6 +15,16 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body id="home">
+  <!-- PAGE PRELOADER -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="assets/logo.png" alt="Logo">
+      </div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
   <!-- BACKGROUND BLOBS -->
   <div class="bg-blobs" aria-hidden="true">
     <div class="blob blob-1"></div>
@@ -26,11 +36,10 @@
   <header class="site-header" role="banner">
     <nav class="nav-inner" aria-label="Main navigation">
       <a class="nav-logo" href="index.html" aria-label="Dr. Priyadarshini homepage">
-        <span class="logo-name">Dr. Priyadarshini Lingaraj</span>
-        <span class="logo-title">MBBS · MS (OBG) · Specialist Gynaecologist & Obstetrician</span>
+        <img src="assets/logo.png" alt="Dr. Priyadarshini Logo" class="logo-img">
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About Dr. Priya</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Patient Stories</a></li>
@@ -47,7 +56,10 @@
 
   <!-- MOBILE NAV -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
+    <a class="nav-logo" href="index.html" style="padding: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+      <img src="assets/logo.png" alt="Logo" class="logo-img">
+    </a>
+    <a href="#home">Home</a>
     <a href="#about">About Dr. Priya</a>
     <a href="#services">Services</a>
     <a href="#testimonials">Patient Stories</a>
@@ -132,37 +144,39 @@
           <p>Her expertise spans the full spectrum of women's reproductive health — from routine gynaecological concerns to the most complex high-risk pregnancies and advanced laparoscopic surgeries. She has performed <strong>over 1,000 laparoscopic surgeries</strong> and overseen <strong>more than 1,000 deliveries</strong>, including high-risk cases involving gestational diabetes, preeclampsia, multiple pregnancies, and preterm labour.</p>
           <p>Beyond the clinic, Dr. Priya is a passionate women's health advocate. She mentors future doctors through <strong>StudyMedic</strong> and empowers women through <strong>EveEmpower.com</strong>. She is fluent in <strong>English, Tamil, Telugu, Hindi, and Malayalam</strong>.</p>
 
-          <div class="timeline">
-            <div class="timeline-title"><i data-lucide="graduation-cap"></i> Education &amp; Career Journey</div>
-            <div class="timeline-item">
+          <div class="timeline stagger-parent" id="education-timeline">
+            <div class="timeline-line-bg"></div>
+            <div class="timeline-active-line"></div>
+            <div class="timeline-title reveal"><i data-lucide="graduation-cap"></i> Education & Career Journey</div>
+            <div class="timeline-item reveal">
               <div class="timeline-dot"><i data-lucide="hospital"></i></div>
               <div>
                 <div class="timeline-year">2012 – Present</div>
-                <div class="timeline-event">Specialist Gynaecologist &amp; Obstetrician</div>
+                <div class="timeline-event">Specialist Gynaecologist & Obstetrician</div>
                 <div class="timeline-place">NMC Speciality Hospital, Abu Dhabi, UAE</div>
               </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="timeline-dot"><i data-lucide="microscope"></i></div>
               <div>
                 <div class="timeline-year">Advanced Training</div>
                 <div class="timeline-event">Fellowship in Minimally Invasive Gynaecological Surgery</div>
-                <div class="timeline-place">Advanced Laparoscopic &amp; Hysteroscopic Procedures</div>
+                <div class="timeline-place">Advanced Laparoscopic & Hysteroscopic Procedures</div>
               </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="timeline-dot"><i data-lucide="graduation-cap"></i></div>
               <div>
                 <div class="timeline-year">Postgraduate</div>
-                <div class="timeline-event">MS – Obstetrics &amp; Gynaecology</div>
+                <div class="timeline-event">MS – Obstetrics & Gynaecology</div>
                 <div class="timeline-place">Specialisation in Reproductive Medicine</div>
               </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="timeline-dot"><i data-lucide="book-open"></i></div>
               <div>
                 <div class="timeline-year">Undergraduate</div>
-                <div class="timeline-event">MBBS – Bachelor of Medicine &amp; Surgery</div>
+                <div class="timeline-event">MBBS – Bachelor of Medicine & Surgery</div>
                 <div class="timeline-place">Foundation of clinical excellence</div>
               </div>
             </div>
@@ -181,21 +195,19 @@
             <p style="font-size:0.85rem;font-weight:600;color:var(--teal);margin-top:8px;margin-bottom:0">— Dr. Priyadarshini Lingaraj</p>
           </div>
 
-          <div class="about-initiatives" style="margin-top:24px">
-            <a class="initiative-item" href="https://www.eveempower.com" target="_blank" rel="noopener">
-              <span class="initiative-icon"><i data-lucide="leaf"></i></span>
-              <div class="initiative-info">
-                <div class="name">EveEmpower.com</div>
-                <div class="desc">Holistic Women's Wellness &amp; Education Platform</div>
-              </div>
-            </a>
-            <a class="initiative-item" href="https://www.studymedic.com" target="_blank" rel="noopener">
-              <span class="initiative-icon"><i data-lucide="graduation-cap"></i></span>
-              <div class="initiative-info">
-                <div class="name">StudyMedic</div>
-                <div class="desc">Medical Mentoring &amp; Postgraduate Exam Coaching</div>
-              </div>
-            </a>
+          <div class="initiatives-grid stagger-parent" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div class="service-card reveal" style="text-align:left;padding:24px">
+              <span class="service-emoji"><i data-lucide="leaf"></i></span>
+              <h3 style="color:var(--teal);font-size:1.1rem">EveEmpower.com</h3>
+              <p style="font-size:0.85rem">Holistic women's wellness platform sharing evidence-based health education and empowerment resources.</p>
+              <a href="https://www.eveempower.com" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;font-size:0.75rem;padding:10px 16px">Visit Website →</a>
+            </div>
+            <div class="service-card reveal pink" style="text-align:left;padding:24px">
+              <span class="service-emoji"><i data-lucide="graduation-cap"></i></span>
+              <h3 style="color:#c0637a;font-size:1.1rem">StudyMedic</h3>
+              <p style="font-size:0.85rem">As a senior faculty member, Dr. Priya mentors doctors preparing for postgraduate OBG exams globally.</p>
+              <a href="https://www.studymedic.com" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:16px;font-size:0.75rem;padding:10px 16px">Learn More →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -474,8 +486,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <span class="logo-name">Dr. Priyadarshini Lingaraj</span>
-          <span class="logo-title">MBBS · MS (OBG) · Specialist Gynaecologist & Obstetrician</span>
+          <img src="assets/logo.png" alt="Logo" class="logo-img">
         </div>
         <p>Providing compassionate, evidence-based women's healthcare at NMC Speciality Hospital, Abu Dhabi. Empowering women through every stage of life.</p>
         <div class="footer-social">
@@ -488,8 +499,8 @@
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Dr. Priya</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Dr. Priya</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="index.html#testimonials">Patient Stories</a></li>
           <li><a href="contact.html">Contact</a></li>
