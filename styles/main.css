@@ -2102,30 +2102,53 @@ p {
 
   .hero-inner {
     padding: 0 20px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
 
   .hero-content-glass {
-    padding: 30px 20px;
-    margin-bottom: 40px;
+    padding: 24px 16px;
+    margin-bottom: 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-image-wrap {
+    display: none !important;
+  }
+
+  .hero-image-card {
+    aspect-ratio: 3/4;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+
+  .hero-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 
   .hero-title {
-    font-size: 2.22rem;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
+    font-size: 1.85rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
     text-align: center;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+    max-width: 100%;
     text-align: center;
   }
 
@@ -2190,9 +2213,29 @@ p {
     padding: 0 10px;
   }
 
-  .service-category-header {
-    text-align: center;
-    padding-bottom: 20px;
+  .hero-stats-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 20px !important;
+    margin-top: 30px !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    text-align: center !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .hero-stat .lucide {
+    margin-bottom: 0;
   }
 
   .category-icon-wrap {
@@ -2304,4 +2347,215 @@ body.loaded #preloader {
 /* Initial body state to prevent scroll */
 body:not(.loaded) {
   overflow: hidden;
+}
+/* =========================================
+   CAREER JOURNEY SECTION (HIW STYLE)
+   ========================================= */
+
+.career-journey-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.career-steps-wrapper {
+  position: relative;
+  max-width: 850px;
+  margin: 50px auto 0;
+  padding-left: 60px;
+}
+
+.career-steps-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 30px; 
+  top: 0; 
+  bottom: 0;
+  width: 2px;
+  background: rgba(42, 157, 143, 0.1);
+  z-index: 1;
+}
+
+.career-progress-line {
+  position: absolute;
+  left: 30px; 
+  top: 0;
+  width: 2px;
+  background: var(--primary);
+  height: 0;
+  z-index: 2;
+  transition: height 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  box-shadow: 0 0 10px rgba(42, 157, 143, 0.3);
+}
+
+.career-step-item {
+  position: relative;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+.career-step-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.career-marker {
+  position: absolute;
+  left: -58px; 
+  top: 25px;
+  width: 55px; 
+  height: 55px;
+  background: var(--white);
+  border: 2px solid var(--glass-border);
+  border-radius: 50
+/* =========================================
+   CAREER JOURNEY SECTION (HIW STYLE)
+   ========================================= */
+
+.career-journey-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.career-steps-wrapper {
+  position: relative;
+  max-width: 850px;
+  margin: 50px auto 0;
+  padding-left: 60px;
+}
+
+.career-steps-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 30px; 
+  top: 0; 
+  bottom: 0;
+  width: 2px;
+  background: rgba(42, 157, 143, 0.1);
+  z-index: 1;
+}
+
+.career-progress-line {
+  position: absolute;
+  left: 30px; 
+  top: 0;
+  width: 2px;
+  background: var(--primary);
+  height: 0;
+  z-index: 2;
+  transition: height 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  box-shadow: 0 0 10px rgba(42, 157, 143, 0.3);
+}
+
+.career-step-item {
+  position: relative;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+.career-step-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.career-marker {
+  position: absolute;
+  left: -58px; 
+  top: 25px;
+  width: 55px; 
+  height: 55px;
+  background: var(--white);
+  border: 2px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  z-index: 3;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: var(--teal);
+}
+
+.career-step-item.active .career-marker {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(42, 157, 143, 0.3);
+  transform: scale(1.1);
+}
+
+.career-marker i, .career-marker svg { 
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.career-step-item.active .career-marker i, 
+.career-step-item.active .career-marker svg { 
+  transform: rotate(360deg);
+}
+
+.career-content h3 { 
+  font-size: 1.4rem; 
+  margin-bottom: 8px; 
+  color: var(--primary-deep); 
+  font-weight: 700;
+}
+
+.career-content .career-sub {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.career-content p { 
+  color: var(--grey); 
+  line-height: 1.6; 
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.career-step-num { 
+  font-size: 0.8rem; 
+  font-weight: 800; 
+  color: var(--primary); 
+  opacity: 0.4;
+  margin-bottom: 4px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .career-steps-wrapper { padding-left: 50px; }
+  .career-steps-wrapper::before, .career-progress-line { left: 20px; }
+  .career-marker { 
+    left: -48px; 
+    width: 45px; 
+    height: 45px; 
+    top: 20px;
+  }
+  .career-marker svg {
+    width: 20px;
+    height: 20px;
+  }
 }

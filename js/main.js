@@ -183,37 +183,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ─── TIMELINE PROGRESS ANIMATION ─── */
-  const timeline = document.getElementById('education-timeline');
-  if (timeline) {
-    const items = timeline.querySelectorAll('.timeline-item');
-    const updateTimeline = () => {
-      const rect = timeline.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const start = windowHeight * 0.8; // Trigger start
-      const end = windowHeight * 0.4;   // Trigger end
-      
-      let progress = 0;
-      if (rect.top < start) {
-        progress = ((start - rect.top) / (start - end)) * 100;
-      }
-      const finalProgress = Math.min(100, Math.max(0, progress));
-      timeline.style.setProperty('--timeline-progress', `${finalProgress}%`);
+  /* ─── CAREER JOURNEY PROGRESS ANIMATION ─── */
+  const careerLine = document.querySelector('.career-progress-line');
+  const careerItems = document.querySelectorAll('.career-step-item');
+  const careerWrapper = document.querySelector('.career-steps-wrapper');
 
-      items.forEach(item => {
-        const dot = item.querySelector('.timeline-dot');
-        if (dot) {
-          const dotRect = dot.getBoundingClientRect();
-          if (dotRect.top + 20 < start) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
+  if (careerWrapper && careerLine) {
+    const updateCareerProgress = () => {
+      const windowHeight = window.innerHeight;
+      const rect = careerWrapper.getBoundingClientRect();
+      
+      // Trigger point
+      const triggerPoint = windowHeight * 0.75;
+      let progress = triggerPoint - rect.top;
+      
+      // Progress clamping
+      const totalHeight = rect.height;
+      let finalHeight = Math.max(0, Math.min(progress, totalHeight));
+      
+      // Set line height
+      careerLine.style.height = `${finalHeight}px`;
+
+      // Activate markers and items
+      careerItems.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top < triggerPoint) {
+           item.classList.add('active');
+        } else {
+           item.classList.remove('active');
         }
       });
     };
-    window.addEventListener('scroll', updateTimeline);
-    updateTimeline(); // Initial run
+
+    window.addEventListener('scroll', updateCareerProgress);
+    window.addEventListener('resize', updateCareerProgress);
+    updateCareerProgress();
   }
 
   /* ─── APPOINTMENT FORM ─── */
